@@ -1,0 +1,38 @@
+#load the first two values from memory into R2 and R3
+ldi R2, 0
+ldi R3, 1
+
+#R3 is the max that we want the program counter to reach
+#R2 is the starting program counter
+ld R2, R2
+ld R3, R3
+
+#set the current max value (R1) to the first of the values in memory
+ld R1, R2
+
+#R3 is the greatest our program counter should reach, R1 is the current max value, and R2 is the program counter, leaving R0
+
+#start the actual loop by adding 1 to the counter
+L0: ldi R0, 1
+   add R2, R0
+
+#load R0 with the current value, then don't change the max if the current value - the max is negative
+   ld R0, R2
+   sub R0, R1
+   jmpn L1
+   nop
+   ld R1, R2
+
+#load R0 with the current counter, then subtract the max counter from that, and if it's negative keep looping.
+L1: move R0, R2
+   sub R0, R3
+   jmpn L0
+   nop
+   
+#muellers stuff to end the program and halt the number of cycles
+   halt 
+D:  jmp  D       # DONE !!!
+    nop
+
+
+# 0008 000e 0000 0000 0000 0000 0000 0000 ff17 0003 0010 001b ffee 0001 0005

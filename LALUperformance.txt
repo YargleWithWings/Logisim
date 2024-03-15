@@ -1,0 +1,6 @@
+1001 cycles to find the max of 100 numbers, so 10.01 cycles per number
+65,000 * 10.01 = 650,650 cycles. That /250 = 43.37 minutes.
+
+65,650 / 1,000,000,000 * 1,000 = 0.65065 milliseconds
+
+1B / 250 *10 = 40,000,000 seconds = 666,666.6666666667 minutes = 463 days
